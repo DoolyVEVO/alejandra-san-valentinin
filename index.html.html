@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Alejandra ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yes {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#no {
+    background-color: #ccc;
+}
+
+.heart-big {
+    position: fixed;
+    font-size: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: pop 0.6s ease forwards;
+}
+
+@keyframes pop {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Alejandra, amor de mi vida ❤️</h1>
+    <h2>¿Quieres ser mi San Valentín?</h2>
+    <button id="yes">Sí 💖</button>
+    <button id="no">No 😢</button>
+</div>
+
+<audio id="music" src="ven.mp3"></audio>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const music = document.getElementById("music");
+
+let size = 18;
+
+yesBtn.addEventListener("click", function() {
+
+    music.play();
+
+    const heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.classList.add("heart-big");
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        const mensaje = document.createElement("h1");
+        mensaje.innerHTML = "Porque te necesito... hoy y siempre, mi niña hermosa ❤️";
+        mensaje.style.position = "fixed";
+        mensaje.style.top = "20%";
+        mensaje.style.left = "50%";
+        mensaje.style.transform = "translateX(-50%)";
+        mensaje.style.color = "white";
+        mensaje.style.fontSize = "30px";
+        document.body.appendChild(mensaje);
+    }, 600);
+});
+
+noBtn.addEventListener("mouseover", function() {
+
+    noBtn.style.position = "absolute";
+
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    size -= 2;
+    if (size > 8) {
+        noBtn.style.fontSize = size + "px";
+    }
+});
+</script>
+
+</body>
+</html>
